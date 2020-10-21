@@ -2,36 +2,24 @@ import os
 
 import csv
 
+# csvpath is variable  for pathway to file csv file
 csvpath = os.path.join('Resources','budget_data.csv')
 
-with open(csvpath) as csvfile:
+#create 2 list 1 for dates 2 for revenue
+dates = []
+revenue = []
+
+# open with path variable, new line data 
+with open(csvpath, newline='') as csvfile:
     csvreader =csv.reader(csvfile, delimiter=",")
 
-    print(csvreader)
+    for row in csvreader:
 
-    #read the header row first (eliminate for counting)
-    csv_header = next(csvreader)
-    
-    #set row counter to zero
-    row_counter = 0
-    sum_profit = 0
-    for x in csvreader:
+        dates.append(row[1])
 
+        revenue.append(float(row[2])
 
-        #create tuple w/date:rev paired w/date string & rev interger
-        date_rev_tuple= (str(x[0]),float(x[1]))
-        
-        #check tuple
-        #print(date_rev_tuple) WORKS
-        print(date_rev_tuple[1])
+# zipped 2 list, create a variable to hold list
+new_clean_file = zip(dates, revenue)
 
-
-        row_counter +=1
-        #difference between x & X-1 
-        # append list
-        #diff_rev_day = (date_rev_tuple([1]) - date_rev_tuple([1])-1))
-        #print(date_rev_tuple(x[1])
-        #print(diff_rev_day)
-        #print(date_rev_tuple(x[1]))
-    # row (-header) = total rows
-    print(row_counter)
+output_file = os.path.join("new_date_rev.csv")
