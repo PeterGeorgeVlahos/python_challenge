@@ -9,7 +9,7 @@ csvpath = os.path.join('Resources','budget_data.csv')
 dates = []
 revenue = []
 profit_loss = []
-net_sum_p_l = 0
+net_sum = 0
 
 # open with path variable, new line data 
 with open(csvpath, newline='') as csvfile:
@@ -23,7 +23,7 @@ with open(csvpath, newline='') as csvfile:
         #import pdb; pdb.set_trace()
             
         dates.append(row[0])
-        revenue.append(float(row[1]))
+        revenue.append(int(row[1]))
 
         row_counter = row_counter + 1
     print(row_counter)
@@ -37,7 +37,19 @@ with open(csvpath, newline='') as csvfile:
         profit_loss = (revenue[j] - revenue[j-1])
         #print(profit_loss)
 
-        #
+    # sum of all rows
+    def sum_net (list):
+        sum=0
+        for i in list:
+            sum += i
+        return sum
+
+
+    print("___________________________________________")
+    sum_net_rev = (revenue)
+    sum_net_rev = sum_net(revenue)
+    print(sum_net_rev)
+
 
 
 # zipped 2 list, create a variable to hold list
@@ -49,6 +61,6 @@ with open(output_file, "w", newline='') as datafiles:
     writer = csv.writer(datafiles)
 
     # write a header row
-    writer.writerow(["Date","Revenue"])
+    writer.writerow(["Date","Revenue","Profit/Lose"])
 
     writer.writerows(new_clean_file)
