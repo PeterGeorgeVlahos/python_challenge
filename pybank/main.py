@@ -13,13 +13,29 @@ revenue = []
 with open(csvpath, newline='') as csvfile:
     csvreader =csv.reader(csvfile, delimiter=",")
 
+    header=next(csvreader)
+    row_counter=0
+
     for row in csvreader:
+        #print(row)
+        #import pdb; pdb.set_trace()
+            
+        dates.append(row[0])
 
-        dates.append(row[1])
+        revenue.append(float(row[1]))
 
-        revenue.append(float(row[2])
+        row_counter = row_counter + 1
+    print(row_counter)
 
 # zipped 2 list, create a variable to hold list
 new_clean_file = zip(dates, revenue)
 
 output_file = os.path.join("new_date_rev.csv")
+
+with open(output_file, "w", newline='') as datafiles:
+    writer = csv.writer(datafiles)
+
+    # write a header row
+    writer.writerow(["Date","Revenue"])
+
+    writer.writerows(new_clean_file)
