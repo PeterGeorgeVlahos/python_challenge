@@ -8,8 +8,7 @@ csvpath = os.path.join('Resources','budget_data.csv')
 #create 2 list 1 for dates 2 for revenue
 dates = []
 revenue = []
-profit_loss = []
-net_sum = 0
+change_in_revenue = []
 
 # open with path variable, new line data 
 with open(csvpath, newline='') as csvfile:
@@ -27,28 +26,32 @@ with open(csvpath, newline='') as csvfile:
 
         row_counter = row_counter + 1
     print(row_counter)
-
     
-    for j in range(2,row_counter):
-
-        # net sum p/l
-
-        # Difference between rev j & rev j-1
-        profit_loss = (revenue[j] - revenue[j-1])
-        #print(profit_loss)
-
-    # sum of all rows
+    # define function to sum of all elements in a list
     def sum_net (list):
         sum=0
         for i in list:
             sum += i
         return sum
 
-
-    print("___________________________________________")
-    sum_net_rev = (revenue)
+    # Define Total of Net Revenue equal to [rev list], 
     sum_net_rev = sum_net(revenue)
-    print(sum_net_rev)
+
+    #create a new list, net difference between months
+    for i in range(2,row_counter):
+        change_in_revenue.append = (revenue(i[0]) - revenue(i-1[0]))
+
+
+    for j in change_in_revenue:
+        print(change_in_revenue[j])
+        
+
+
+    print("")
+    print(f"Sum of Net Profit/Loss ${sum_net_rev}")
+    print("")
+    
+
 
 
 
