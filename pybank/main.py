@@ -42,13 +42,37 @@ with open(csvpath, newline='') as csvfile:
     print("")
 
     #create list of net difference between months
-    
-    for i in range(2,row_counter):
+    for i in range(1,row_counter):
         change_in_revenue.append(revenue[i] - revenue[i-1])
-        
+
+    #count number of rows in list change_in_revenue
+    count_a = 0
+    for a in (change_in_revenue):
+        count_a= count_a+1
+    print(f"Number of row is change in revenue is {count_a} ")
+
     #run def function form change in range
     sum_month_difference = sum_net(change_in_revenue)
-    print(f"Differnce in revenue each month ${sum_month_difference}")
+    ave_month_difference = round(float(sum_month_difference/count_a),2)
+    print(f"Differnce in revenue each month ${ave_month_difference}")
+
+    #Larget Increase in Net Profits
+    max_b=0
+    for b in range(1,84):
+        if change_in_revenue[b] > max_b:
+            max_b = (change_in_revenue[b])
+    print(f"Max Value $ {max_b}")
+
+    
+    min_c=max_b
+    for c in range(1,84):
+        if change_in_revenue[c] < min_c:
+            min_c = (change_in_revenue[c])
+    print(f"Min Value $ {min_c}")
+
+    #dates, change_in_revenue 
+
+
 
 
 # zipped 2 list, create a variable to hold list
