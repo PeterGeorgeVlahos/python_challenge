@@ -37,22 +37,18 @@ with open(csvpath, newline='') as csvfile:
     # Define Total of Net Revenue equal to [rev list], 
     sum_net_rev = sum_net(revenue)
 
-    #create a new list, net difference between months
-    for i in range(2,row_counter):
-        change_in_revenue.append = (revenue(i[0]) - revenue(i-1[0]))
-
-
-    for j in change_in_revenue:
-        print(change_in_revenue[j])
-        
-
-
     print("")
     print(f"Sum of Net Profit/Loss ${sum_net_rev}")
     print("")
+
+    #create list of net difference between months
     
-
-
+    for i in range(2,row_counter):
+        change_in_revenue.append(revenue[i] - revenue[i-1])
+        
+    #run def function form change in range
+    sum_month_difference = sum_net(change_in_revenue)
+    print(f"Differnce in revenue each month ${sum_month_difference}")
 
 
 # zipped 2 list, create a variable to hold list
