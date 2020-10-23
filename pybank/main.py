@@ -25,7 +25,7 @@ with open(csvpath, newline='') as csvfile:
         revenue.append(int(row[1]))
 
         row_counter = row_counter + 1
-    print(row_counter)
+    print(f"Total Months: {row_counter}")
     
     # define function to sum of all elements in a list
     def sum_net (list):
@@ -37,9 +37,9 @@ with open(csvpath, newline='') as csvfile:
     # Define Total of Net Revenue equal to [rev list], 
     sum_net_rev = sum_net(revenue)
 
-    print("")
-    print(f"Sum of Net Profit/Loss ${sum_net_rev}")
-    print("")
+    
+    print(f"Total:  ${sum_net_rev}")
+    
 
     #create list of net difference between months
     for i in range(1,row_counter):
@@ -49,34 +49,45 @@ with open(csvpath, newline='') as csvfile:
     count_a = 0
     for a in (change_in_revenue):
         count_a= count_a+1
-    print(f"Number of row is change in revenue is {count_a} ")
+    #print(f"Number of row is change in revenue is {count_a} ")
 
     #run def function form change in range
     sum_month_difference = sum_net(change_in_revenue)
     ave_month_difference = round(float(sum_month_difference/count_a),2)
-    print(f"Differnce in revenue each month ${ave_month_difference}")
+    print(f"Average Charge: ${ave_month_difference}")
+    
 
+    #dates list with one less element  
+    dates.pop(0)
+    # zipped 2 list, create a variable to hold list
+    new_clean_file = zip(dates, change_in_revenue)
+    
     #Larget Increase in Net Profits
     max_b=0
     for b in range(1,84):
         if change_in_revenue[b] > max_b:
             max_b = (change_in_revenue[b])
-    print(f"Max Value $ {max_b}")
-
+        #print(dates[b])
     
-    min_c=max_b
+    for e in new_clean_file:
+        if e[1]==max_b:
+            print(f"Greatest Increase in Profits: {(e[0])} (${(e[1])})")
+
+    min_c=0
     for c in range(1,84):
         if change_in_revenue[c] < min_c:
             min_c = (change_in_revenue[c])
-    print(f"Min Value $ {min_c}")
+    
+    for f in new_clean_file:
+        if f[1]==min_c:
+            print(f[0])
+            print(f[1])
+            print(f"Min Value $ {min_c}")
 
-    #dates, change_in_revenue 
 
 
 
 
-# zipped 2 list, create a variable to hold list
-new_clean_file = zip(dates, revenue)
 
 output_file = os.path.join("new_date_rev.csv")
 
