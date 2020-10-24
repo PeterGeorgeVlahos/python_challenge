@@ -13,17 +13,55 @@ with open(csvpath) as csvfile:
     print(csvheader)
 
     total_votes = 0
-    candidate = []
-    percent_vote = []
-    votes_cast_for = []
+    
+    can_1_votes = 0
+    can_2_votes = 0
+    can_3_votes = 0
+    can_4_votes = 0
+    unknown_can_votes = 0
+    
+    name_1_can = "Khan"
+    name_2_can = "Correy"
+    name_3_can = "Li"
+    name_4_can = "O'Tooley"
+ 
 
-    #3 column list No header [Name(0), Pect Total (1), Votes for(2) ]
     for a in csvreader:
         total_votes = total_votes + 1
 
-        #do I want 1 list with per canidate OR 1 list per Object? Right 
-        #now just find the the votes per canidate
-        if csvreader[2] == "":
+        # vote count per canidate
+        if a[2] == name_1_can:
+            can_1_votes += 1
+        elif a[2]== name_2_can:
+            can_2_votes += 1
+        elif a[2] == name_3_can:
+            can_3_votes += 1
+        elif a[2] == name_4_can:
+            can_4_votes = can_4_votes + 1
+        elif:
+            unknown_can_votes = total_votes - (can_1_votes+can_2_votes+can_3_votes+can_4_votes)
+            print(f"There are other canidates: {unknown_can_votes}")
+    
+    # Percenatge of votes
+    percentage_of_can_1_votes = round(can_1_votes/total_votes*100)
+    percentage_of_can_2_votes = round(can_2_votes/total_votes*100)
+    percentage_of_can_3_votes = round(can_3_votes/total_votes*100)
+    percentage_of_can_4_votes = round(can_4_votes/total_votes*100)
+
+    #Winner is
+    if total_votes
+    
+
+
+
+print(f"{name_1_can}: {can_1_votes}") 
+print(f"{name_2_can}: {can_2_votes}")
+print(f"{name_3_can}: {can_3_votes}")
+print(f"{name_4_can}: {can_4_votes}")
+
+
+
+
 
 
     
