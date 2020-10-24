@@ -39,9 +39,27 @@ with open(csvpath) as csvfile:
         elif a[2] == name_4_can:
             can_4_votes = can_4_votes + 1
         elif:
-            unknown_can_votes = total_votes - (can_1_votes+can_2_votes+can_3_votes+can_4_votes)
+            can_unknown_votes = total_votes - (can_1_votes+can_2_votes+can_3_votes+can_4_votes)
             print(f"There are other canidates: {unknown_can_votes}")
     
+        # find winner (next time build code win any number of canidates)
+        if can_1_votes > can_2_votes and can_1_votes > can_3_votes > and can_1_votes > can_4_votes and can_1_votes > can_unknown_votes:
+            winning_can = can_1_votes
+        elif can_2_votes > can_1_votes and can_2_votes > can_3_votes and can_2_votes > can_4_votes and can_2_votes > can_unknown_votes:
+            winning_can = can_2_votes
+        elif can_3_votes > can_1_votes and can_3_votes > can_2_votes and can_3_votes > can_4_votes and can_3_votes > can_unknown_votes:
+            winning_can > can_3_votes
+        elif can_4_votes > can_1_votes and can_4_votes > can_2_votes and can_4_votes > can_3_votes and can_4_votes > can_unknown_votes:
+            winning_can > can_4_votes
+        elif can_unknown_votes > can_1_votes and can_unknown_votes > can_2_votes and can_unknown_votes > can_3_votes and can_unknown_votes > can_4_votes:
+            winning_can = can_unknown_votes
+        else:
+            winning_can = "Unknown Canidate Won"
+            
+
+
+
+
     # Percenatge of votes
     percentage_of_can_1_votes = round(can_1_votes/total_votes*100)
     percentage_of_can_2_votes = round(can_2_votes/total_votes*100)
