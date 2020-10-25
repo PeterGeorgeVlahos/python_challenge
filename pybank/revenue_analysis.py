@@ -2,7 +2,7 @@ import os
 import csv
 
 csvpath = os.path.join('Resources','budget_data.csv')
-output_path = os.path.join('analysis.txt')
+output_path = os.path.join('financial_analysis.txt')
 
 date_list =[]
 revenue_list = []
@@ -44,7 +44,7 @@ for i in range(1,total_revenue_months):
 total_change_in_revenue = sum_list(change_in_revenue_list)
 
 average_change_in_revenue = round(total_change_in_revenue / (total_revenue_months-1),2)
-print(average_change_in_revenue)
+
 
 date_list.pop(0)
 date_change_rev_list = [I for I in zip(date_list, change_in_revenue_list)]
@@ -65,7 +65,7 @@ for x in date_change_rev_list:
         min_date = x[0]
 
 
-print(
+output = (
     'Financial Analysis\n'
     '--------------------------\n'
     f'Total Months: {total_revenue_months}\n'
@@ -77,9 +77,6 @@ print(
 )
 
 
-
-
-
-
-
+with open('financial_analysis.txt', 'w') as txt_file:
+    txt_file.write(output)
       
